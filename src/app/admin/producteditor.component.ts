@@ -26,4 +26,9 @@ export class ProductEditorComponent {
         this.repository.saveProduct(this.product);
         this.router.navigateByUrl("/admin/main/products");
     }
+
+    numericPattern = /^[0-9]*$/;
+    numericOnly(event:any){
+       return this.numericPattern.test(event.key);
+    }
 }

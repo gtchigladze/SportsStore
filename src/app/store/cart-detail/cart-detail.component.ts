@@ -7,7 +7,7 @@ import { Cart } from 'src/app/model/cart.model';
   styleUrls: ['./cart-detail.component.scss']
 })
 export class CartDetailComponent  {
-  val: any
+
 
   constructor(public cart: Cart) { }
 

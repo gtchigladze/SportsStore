@@ -52,8 +52,8 @@
     <div class="form-group">
         <label >Zip/Postal Code</label>
         <input type="number" class="form-control" #zip="ngModel" name="zip"
-        [(ngModel)]="order.zip" required>
-        <span *ngIf="submitted && zip.invalid" class="text-danger">
+        [(ngModel)]="order.zip" (keypress)="numericOnly($event)" required>
+        <span *ngIf="submitted && zip.invalid" class="text-danger" >
             Please enter you zip/postal code
         </span>
     </div>

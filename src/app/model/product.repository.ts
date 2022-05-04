@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { Product } from "./product.model";
 import { RestDataSource } from "./rest.datasource";
 
@@ -7,13 +7,14 @@ import { RestDataSource } from "./rest.datasource";
 
 @Injectable()
 
-export class ProductRepository {
+export class ProductRepository implements OnInit {
     private products: Product[] = [];
     private categories: (string | undefined)[] = [];
 
     constructor(private dataSource: RestDataSource){
         dataSource.getProducts().subscribe(data => {
             this.products = data;
+            console.log(data)
             this.categories = data.map(p => p.category)
             .filter((c, index, array) => array.indexOf(c) == index).sort()
         })
@@ -23,6 +24,8 @@ export class ProductRepository {
         return this.products.filter(p =>
             category == '' || category == p.category)
     }
+
+   
 
     getProduct(id: number): Product | undefined {
         return this.products.find(p => p.id == id);
@@ -52,5 +55,11 @@ export class ProductRepository {
                 findIndex(p => p.id == id), 1);
         })
     }
+
+    ngOnInit(): void {
+       
+    }
+
+    
     
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Order } from '../model/order.model';
 import { OrderRepository } from '../model/order.repository';
 
@@ -7,7 +7,7 @@ import { OrderRepository } from '../model/order.repository';
   templateUrl: './orderTable.component.html',
 
 })
-export class OrderTableComponent {
+export class OrderTableComponent implements OnInit {
 includeShipped = false;
 
 constructor(private repository: OrderRepository){}
@@ -25,6 +25,10 @@ markShipped(order: Order){
 
 delete(id: number){
   this.repository.deleteOrder(id)
+}
+
+ngOnInit(): void {
+    this.getOrders()
 }
     
 

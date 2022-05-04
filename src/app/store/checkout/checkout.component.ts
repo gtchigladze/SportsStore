@@ -48,6 +48,12 @@ export class CheckoutComponent implements OnInit  {
         ],
         });
       }
+
+
+      numericPattern = /^[0-9]*$/;
+      numericOnly(event:any){
+         return this.numericPattern.test(event.key);
+      }
   
 
 }
